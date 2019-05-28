@@ -8,7 +8,13 @@ module.exports = (app) => {
 
    app.get('/categories', (req, res, next) => {
       res.render('categories', {
-         "title": "The News Paper - News &amp; Lifestyle Magazine Template"
+         "title": "The News Paper - News & Lifestyle Magazine Template"
+      });
+   });
+
+   app.get('/about', (req, res, next) => {
+      res.render('about', {
+         "title": "The News Paper - News & Lifestyle Magazine Template"
       });
    });
 
