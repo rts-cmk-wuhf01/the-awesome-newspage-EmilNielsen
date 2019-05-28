@@ -21,13 +21,22 @@
     <%- include('partials/hero-banners') %>
     <!-- ##### Hero Area End ##### -->
 
-    <!-- ##### Featured Post Area Start ##### -->
-    <%- include('partials/main-feature') %>
-    <!-- ##### Featured Post Area End ##### -->
+    <div class="featured-post-area">
+        <div class="container">
+            <div class="row">
+                <!-- ##### Featured Post Area Start ##### -->
+                <%- include('partials/top-featured-post') %>
 
-    <!-- ##### Popular News Area Start ##### -->
-    <%- include('partials/popular-news') %>
-    <!-- ##### Popular News Area End ##### -->
+                <%- include('partials/top-side-news') %>
+                <!-- ##### Featured Post Area End ##### -->
+
+                <!-- ##### Popular News Area Start ##### -->
+                <%- include('partials/popular-news') %>
+                <!-- ##### Popular News Area End ##### -->
+            </div>
+        </div>
+    </div>
+
 
     <!-- ##### Video Post Area Start ##### -->
     <%- include('partials/videos') %>
