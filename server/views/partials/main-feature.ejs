@@ -1,17 +1,13 @@
 <div class="featured-post-area">
 	<div class="container">
 		<div class="row">
-			<div class="col-12 col-md-6 col-lg-8">
-				<div class="row">
+			<!-- MAIN CONTENT -->
+			<%- include('top-featured-post') %>
+			<!-- MAIN CONTENT END -->
 
-					<!-- Single Featured Post -->
-					<%- include('top-featured-post') %>
-
-					<%- include('top-side-posts.ejs') %>
-				</div>
-			</div>
-
-			<%- include('top-side-news.ejs') %>
+			<!-- SIDE NEWS -->
+			<%- include('top-side-news') %>
+			<!-- SIDE NEWS END -->
 		</div>
 	</div>
 </div>
