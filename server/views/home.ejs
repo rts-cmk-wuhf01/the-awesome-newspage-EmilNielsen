@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    
+
     <%- include('partials/head-links')%>
 
 </head>
@@ -31,7 +31,15 @@
                 <!-- ##### Featured Post Area End ##### -->
 
                 <!-- ##### Popular News Area Start ##### -->
-                <%- include('partials/popular-news') %>
+                <div class="popular-news-area section-padding-80-50">
+                    <div class="container">
+                        <div class="row">
+                            <%- include('partials/popular-news') %>
+
+                            <%- include('partials/info') %>
+                        </div>
+                    </div>
+                </div>
                 <!-- ##### Popular News Area End ##### -->
             </div>
         </div>
@@ -44,7 +52,7 @@
 
     <!-- ##### Editorial Post Area Start ##### -->
     <%- include('partials/editors-pick') %>
-            
+
     <!-- ##### Editorial Post Area End ##### -->
 
     <!-- ##### Footer Add Area Start ##### -->
