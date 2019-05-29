@@ -30,10 +30,11 @@ module.exports = (app) => {
       });
    });
    
-   app.get('/test', (req, res, next) => {
+   // Used to try different ways of putting the different pages together
+   /* app.get('/test', (req, res, next) => {
       res.render('test', {
          "title": "The News Paper - News & Lifestyle Magazine Template"
       });
-   });
+   }); */
 
 };
