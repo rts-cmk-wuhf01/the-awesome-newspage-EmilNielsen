@@ -8,11 +8,11 @@
 	<%- include('partials/head-links') %>
 </head>
 <body>
-	
 	<%- include('partials/header-full') %>
 	<%- include('partials/hero-banners') %>
 	
-	<div class="blog-area section-padding-0-80">
+	<!-- ##### Blog Area Start ##### -->
+    <div class="blog-area section-padding-0-80">
 			<div class="container">
 				<div class="row">
 					<div class="col-12 col-lg-8">
@@ -81,7 +81,6 @@
 							</div>
 	
 							<div class="row">
-								
 								<!-- Single Post -->
 								<div class="col-12 col-md-6">
 									<div class="single-blog-post style-3 mb-80">
@@ -209,19 +208,12 @@
 					</div>
 	
 					<div class="col-12 col-lg-4">
-							<%- include('partials/top-side-news') %>
 						<div class="blog-sidebar-area">
-
 							
-	
 							<!-- Latest Posts Widget -->
+							<%- include('partials/top-side-news') %>
+	
 							<%- include('partials/most-popular-news') %>
-	
-							<!-- Popular News Widget -->
-							
-	
-							<!-- Newsletter Widget -->
-							
 	
 							<!-- Latest Comments Widget -->
 							<div class="latest-comments-widget">
@@ -276,7 +268,8 @@
 				</div>
 			</div>
 		</div>
-	
+		<!-- ##### Blog Area End ##### -->
+
 	<%- include('partials/footer-full') %>
 	<%- include('partials/scripts') %>
 </body>

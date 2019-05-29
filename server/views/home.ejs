@@ -25,11 +25,21 @@
         <div class="container">
             <div class="row">
                 <!-- ##### Featured Post Area Start ##### -->
-                <%- include('partials/top-featured-post') %>
-
-                <%- include('partials/top-side-news') %>
+                <div class="featured-post-area">
+                        <div class="container">
+                            <div class="row">
+                                <!-- MAIN CONTENT -->
+                                <%- include('partials/top-featured-post') %>
+                                <!-- MAIN CONTENT END -->
+                
+                                <!-- SIDE NEWS -->
+                                <%- include('partials/top-side-news') %>
+                                <!-- SIDE NEWS END -->
+                            </div>
+                        </div>
+                    </div>
                 <!-- ##### Featured Post Area End ##### -->
-
+                
                 <!-- ##### Popular News Area Start ##### -->
                 <div class="popular-news-area section-padding-80-50">
                     <div class="container">

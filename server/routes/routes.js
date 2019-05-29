@@ -29,5 +29,11 @@ module.exports = (app) => {
          "title": "The News Paper - News & Lifestyle Magazine Template"
       });
    });
+   
+   app.get('/test', (req, res, next) => {
+      res.render('test', {
+         "title": "The News Paper - News & Lifestyle Magazine Template"
+      });
+   });
 
 };

@@ -1,4 +1,4 @@
-# The Awesome Newspage
+# The Awesome Newspage - Emil Nielsen
 
 ## Installation
 
