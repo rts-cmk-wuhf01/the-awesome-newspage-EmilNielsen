@@ -15,11 +15,14 @@
 
 				<li><a href="#">Dropdown</a>
 					<ul class="dropdown">
-						<li><a href="/">Home</a></li>
+						<!-- <li><a href="/">Home</a></li>
 						<li><a href="/categories">Catagories</a></li>
 						<li><a href="single-post">Single Articles</a></li>
 						<li><a href="/about">About Us</a></li>
-						<li><a href="contact">Contact</a></li>
+						<li><a href="contact">Contact</a></li> -->
+						<% pageNameList.forEach(pageName => { %>
+							<li><a href="<%= pageName.link%>"><%= pageName.name %></a></a></li>
+						<% }) %>
 					</ul>
 				</li>
 			</ul>
@@ -28,27 +31,36 @@
 			<div class="megamenu">
 				<ul class="single-mega cn-col-4">
 					<li class="title">Catagories</li>
-					<li><a href="/">Home</a></li>
+					<!-- <li><a href="/">Home</a></li>
 					<li><a href="/categories">Catagories</a></li>
 					<li><a href="single-post">Single Articles</a></li>
 					<li><a href="/about">About Us</a></li>
-					<li><a href="contact">Contact</a></li>
+					<li><a href="contact">Contact</a></li> -->
+					<% pageNameList.forEach(pageName => { %>
+						<li><a href="<%= pageName.link%>"><%= pageName.name %></a></a></li>
+					<% }) %>
 				</ul>
 				<ul class="single-mega cn-col-4">
 					<li class="title">Catagories</li>
-					<li><a href="/">Home</a></li>
+					<!-- <li><a href="/">Home</a></li>
 					<li><a href="/categories">Catagories</a></li>
 					<li><a href="single-post">Single Articles</a></li>
 					<li><a href="/about">About Us</a></li>
-					<li><a href="contact">Contact</a></li>
+					<li><a href="contact">Contact</a></li> -->
+					<% pageNameList.forEach(pageName => { %>
+						<li><a href="<%= pageName.link%>"><%= pageName.name %></a></a></li>
+					<% }) %>
 				</ul>
 				<ul class="single-mega cn-col-4">
 					<li class="title">Catagories</li>
-					<li><a href="/">Home</a></li>
+					<!-- <li><a href="/">Home</a></li>
 					<li><a href="/categories">Catagories</a></li>
 					<li><a href="single-post">Single Articles</a></li>
 					<li><a href="/about">About Us</a></li>
-					<li><a href="contact">Contact</a></li>
+					<li><a href="contact">Contact</a></li> -->
+					<% pageNameList.forEach(pageName => { %>
+						<li><a href="<%= pageName.link%>"><%= pageName.name %></a></a></li>
+					<% }) %>
 				</ul>
 				<div class="single-mega cn-col-4">
 					<!-- Single Featured Post -->
