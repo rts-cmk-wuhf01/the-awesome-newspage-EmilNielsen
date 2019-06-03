@@ -26,19 +26,9 @@ module.exports = (app) => {
          }
       ];
 
-      let dates = [
-         '2019-04-14 7:45:00',
-         '2019-04-14 7:15:00',
-         '2019-04-14 8:15:00',
-         '2019-04-14 6:55:00',
-         '2019-04-14 9:13:00',
-         '2019-04-16 7:15:00',
-      ];
-
       res.render('home', {
          "title": "The News Paper - News & Lifestyle Magazine Template",
-         "pageNameList": pageNames,
-         "newsDates": dates
+         "pageNameList": pageNames
       });
    });
 
@@ -67,10 +57,39 @@ module.exports = (app) => {
    });
    
    // Used to try different ways of putting the different pages together
-   /* app.get('/test', (req, res, next) => {
+   app.get('/test', (req, res, next) => {
+
+      let latestComments = [
+         {
+            "name": "Comment the 1st",
+            "date": "2019-04-14 7:45:00"
+         },
+         {
+            "name": "2nd Comment",
+            "date": "2019-04-14 9:10:00"
+         },
+         {
+            "name": "a 3rd Comment",
+            "date": "2019-04-14 8:05:00"
+         },
+         {
+            "name": "May the 4th be with me",
+            "date": "2019-04-14 7:25:00"
+         },
+         {
+            "name": "Comment the 5th?",
+            "date": "2019-04-14 6:58:00"
+         },
+         {
+            "name": "End of the line buddy... 6th comment",
+            "date": "2019-04-13 7:35:00"
+         },
+      ];
+
       res.render('test', {
-         "title": "The News Paper - News & Lifestyle Magazine Template"
+         "title": "The Amazing Test Page",
+         "latestComments": latestComments
       });
-   }); */
+   });
 
 };
