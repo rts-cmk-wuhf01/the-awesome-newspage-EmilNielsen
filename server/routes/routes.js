@@ -28,8 +28,8 @@ module.exports = (app) => {
 
       let latestComments = [
          {
-            "name": "Comment the 1st",
-            "date": "2019-01-14 7:45:00"
+            "name": "The beginning",
+            "date": "1970-01-01 0:00:00"
          },
          {
             "name": "2nd Comment",
@@ -65,8 +65,8 @@ module.exports = (app) => {
 
       let latestComments = [
          {
-            "name": "Comment the 1st",
-            "date": "2019-04-14 7:45:00"
+            "name": "The beginning of the End",
+            "date": "1970-01-01 0:00:00"
          },
          {
             "name": "2nd Comment",
@@ -85,20 +85,71 @@ module.exports = (app) => {
             "date": "2019-04-14 6:58:00"
          },
          {
-            "name": "End of the line buddy... 6th comment",
+            "name": "The End of the... End?",
             "date": "2019-04-13 7:35:00"
          },
       ];
 
+      let pageNames = [
+         {
+            "name": "Home",
+            "link": "/"
+         },
+         {
+            "name": "Categories",
+            "link": "/categories"
+         },
+         {
+            "name": "Single Articles",
+            "link": "/single-post"
+         }
+         ,
+         {
+            "name": "About Us",
+            "link": "/about"
+         },
+         {
+            "name": "Contact",
+            "link": "/contact"
+         }
+      ];
+
       res.render('categories', {
          "title": "The News Paper - News & Lifestyle Magazine Template",
+         "pageNameList": pageNames,
          "latestComments": latestComments
       });
    });
 
    app.get('/about', (req, res, next) => {
+
+      let pageNames = [
+         {
+            "name": "Home",
+            "link": "/"
+         },
+         {
+            "name": "Categories",
+            "link": "/categories"
+         },
+         {
+            "name": "Single Articles",
+            "link": "/single-post"
+         }
+         ,
+         {
+            "name": "About Us",
+            "link": "/about"
+         },
+         {
+            "name": "Contact",
+            "link": "/contact"
+         }
+      ];
+      
       res.render('about', {
-         "title": "The News Paper - News & Lifestyle Magazine Template"
+         "title": "The News Paper - News & Lifestyle Magazine Template",
+         "pageNameList": pageNames
       });
    });
 
@@ -137,9 +188,34 @@ module.exports = (app) => {
          },
       ];
 
+      let pageNames = [
+         {
+            "name": "Home",
+            "link": "/"
+         },
+         {
+            "name": "Categories",
+            "link": "/categories"
+         },
+         {
+            "name": "Single Articles",
+            "link": "/single-post"
+         }
+         ,
+         {
+            "name": "About Us",
+            "link": "/about"
+         },
+         {
+            "name": "Contact",
+            "link": "/contact"
+         }
+      ];
+
       res.render('single-post', {
          "title": "The News Paper - News & Lifestyle Magazine Template",
-         "latestComments": latestComments
+         "latestComments": latestComments,
+         "pageNameList": pageNames
       });
    });
    
