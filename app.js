@@ -1,6 +1,7 @@
 // indlæs express modulet, dette er vores serverprogram
 const express = require('express');
 // opret en express applikation 
+const dateAndTime = require('date-and-time');
 const app = express();
 
 
@@ -21,6 +22,8 @@ app.set('view engine', 'ejs');
 // peg på den mappe hvor alle views filerne er placeret
 app.set('views', './server/views');
 
+
+app.locals.dateAndTime = require('date-and-time');
 
 
 /* indlæs alle de routes serveren skal håndtere
