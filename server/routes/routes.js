@@ -26,9 +26,19 @@ module.exports = (app) => {
          }
       ];
 
+      let dates = [
+         '',
+         '',
+         '',
+         '',
+         '',
+         '',
+      ];
+
       res.render('home', {
          "title": "The News Paper - News & Lifestyle Magazine Template",
-         "pageNameList": pageNames
+         "pageNameList": pageNames,
+         "newsDates": dates
       });
    });
 

@@ -24,6 +24,7 @@ app.set('views', './server/views');
 
 
 app.locals.dateAndTime = require('date-and-time');
+app.locals.dateAndTime.locale('da');
 
 
 /* indlæs alle de routes serveren skal håndtere
