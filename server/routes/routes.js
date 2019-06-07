@@ -154,8 +154,34 @@ module.exports = (app) => {
    });
 
    app.get('/contact', (req, res, next) => {
+
+      let pageNames = [
+         {
+            "name": "Home",
+            "link": "/"
+         },
+         {
+            "name": "Categories",
+            "link": "/categories"
+         },
+         {
+            "name": "Single Articles",
+            "link": "/single-post"
+         }
+         ,
+         {
+            "name": "About Us",
+            "link": "/about"
+         },
+         {
+            "name": "Contact",
+            "link": "/contact"
+         }
+      ];
+
       res.render('contact', {
-         "title": "The News Paper - News & Lifestyle Magazine Template"
+         "title": "The News Paper - News & Lifestyle Magazine Template",
+         "pageNameList": pageNames
       });
    });
 
