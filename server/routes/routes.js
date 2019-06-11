@@ -248,6 +248,37 @@ module.exports = (app) => {
    // Used to try different ways of putting the different pages together
    app.get('/test', (req, res, next) => {
 
+      let categories = [
+         {
+            "categoryID": 1,
+            "categoryName": "politics"
+         },
+         {
+            "categoryID": 2,
+            "categoryName": "breaking news"
+         },
+         {
+            "categoryID": 3,
+            "categoryName": "business"
+         },
+         {
+            "categoryID": 4,
+            "categoryName": "technology"
+         },
+         {
+            "categoryID": 5,
+            "categoryName": "health"
+         },
+         {
+            "categoryID": 6,
+            "categoryName": "travel"
+         },
+         {
+            "categoryID": 7,
+            "categoryName": "sports"
+         },
+      ];
+
       let latestComments = [
          {
             "name": "Comment the 1st",
@@ -277,10 +308,12 @@ module.exports = (app) => {
 
       res.render('test', {
          "title": "The Amazing Test Page",
-         "latestComments": latestComments
+         "latestComments": latestComments,
+         "categories": categories
       });
    });
 
+   // Now testing with urlParams
    app.get('/test/:test_id', async (req, res, next) => {
 
       let categories = [
@@ -314,9 +347,7 @@ module.exports = (app) => {
          },
       ];
 
-      res.render("test", {
-         "categories": categories
-      });
+      res.send(req.params.test_id);
 
    });
 
