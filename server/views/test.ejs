@@ -170,7 +170,11 @@
                                     <li><a href="#">Health</a></li>
                                     <li><a href="#">Travel</a></li>
                                     <li><a href="#">Sports</a></li> -->
-                                    <%  %>
+                                    <% if(typeof categories != "undefined") { %>
+                                        <% categories.forEach(category => { %>
+                                            <li><a href="test/<%= test.test_id %>"><%= category.name %></a></li>
+                                        <% }) %>
+                                    <% } %>
                                     <li><a href="contact.html">Contact</a></li>
                                 </ul>
                             </div>
