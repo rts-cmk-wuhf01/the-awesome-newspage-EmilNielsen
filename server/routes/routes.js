@@ -281,4 +281,43 @@ module.exports = (app) => {
       });
    });
 
+   app.get('/test/:test_id', async (req, res, next) => {
+
+      let categories = [
+         {
+            "categoryID": 1,
+            "categoryName": "politics"
+         },
+         {
+            "categoryID": 2,
+            "categoryName": "breaking news"
+         },
+         {
+            "categoryID": 3,
+            "categoryName": "business"
+         },
+         {
+            "categoryID": 4,
+            "categoryName": "technology"
+         },
+         {
+            "categoryID": 5,
+            "categoryName": "health"
+         },
+         {
+            "categoryID": 6,
+            "categoryName": "travel"
+         },
+         {
+            "categoryID": 7,
+            "categoryName": "sports"
+         },
+      ];
+
+      res.render("test", {
+         "categories": categories
+      });
+
+   });
+
 };
