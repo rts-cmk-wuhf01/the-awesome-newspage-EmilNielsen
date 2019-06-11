@@ -347,7 +347,10 @@ module.exports = (app) => {
          },
       ];
 
-      res.send(req.params.test_id);
+      res.render('test', {
+         "title": "The News Paper - News & Lifestyle Magazine Template",
+         "categories": categories
+      });
 
    });
 
