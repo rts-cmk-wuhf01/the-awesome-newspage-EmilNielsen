@@ -292,8 +292,10 @@ module.exports = (app) => {
 
       res.render('single-category', {
          "title": "The News Paper - News & Lifestyle Magazine Template",
-         "articles": articlesFromDB[0]
+         "articles": articlesFromDB
       });
+
+      console.log(articlesFromDB.length);
 
       // res.send(req.params.test_id);
 

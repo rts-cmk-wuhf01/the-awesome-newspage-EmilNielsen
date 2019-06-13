@@ -7,10 +7,23 @@
 	<%- include("partials/head-links") %>
 </head>
 <body>
+
 	<% if(typeof articles != "undefined") { %>
-		<h1><%= articles.article_title %></h1>
+		<% if(articles.length === 0) { %>
+			<h2>Sorry, no articles currently exist in this category</h2>
+			<% } else { %>
+				<% articles.forEach(article => { %>
+					<h1><%= article.article_title %></h1>
+					<h3><%= article.category_title %></h3>
+					<h6><%= article.author_name %></h6>
+					<p><%= article.article_text %></p>
+					<p><%= article.article_comments %></p>
+				<% }); %>
+			<% } %>
 	<% } else { %>
-		<h3><em><%= "Sorry, but something has gone wrong and I was unable to get your data" %> ;_; </em></h3>
+		<h3><em><%= "Sorry, but something has gone wrong and I was unable to get your data" %> ( ≧Д≦) </em></h3>
 	<% } %>
+
+	
 </body>
 </html>
