@@ -172,7 +172,7 @@
                                     <li><a href="#">Sports</a></li> -->
                                     <% if(typeof categories != "undefined") { %>
                                         <% categories.forEach(category => { %>
-                                            <li><a href="/test/<%= category.category_title %>"><%= category.category_title %></a></li>
+                                            <li><a href="/test/<%= category.ID %>"><%= category.category_title %></a></li>
                                         <% }); %>
                                     <% } %>
                                     <li><a href="/contact">Contact</a></li>
