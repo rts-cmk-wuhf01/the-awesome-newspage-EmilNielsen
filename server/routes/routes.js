@@ -266,15 +266,16 @@ module.exports = (app) => {
    // Now testing with urlParams
    app.get('/test/:test_id', async (req, res, next) => {
 
-      // let db = await mysql.connect();
-      // let [articles] = await db.execute("SELECT * FROM articles WHERE fk_category_id = ?", req.params.test_id);
-      // db.end();
+      let db = await mysql.connect();
+      let [articlesFromDB] = await db.execute("SELECT * FROM articles WHERE fk_category_id = ?", [req.params.test_id]);
+      db.end();
 
-      // res.render('test', {
-      //    "title": "The News Paper - News & Lifestyle Magazine Template"
-      // });
+      res.render('single-category', {
+         "title": "The News Paper - News & Lifestyle Magazine Template",
+         "articles": articlesFromDB[0]
+      });
 
-      res.send(req.params.test_id);
+      // res.send(req.params.test_id);
 
    });
 

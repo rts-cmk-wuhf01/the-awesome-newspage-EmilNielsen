@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<%- include("partials/head-links") %>
+</head>
+<body>
+	<% if(typeof articles != "undefined") { %>
+		<h1><%= articles.article_postdate %></h1>
+	<% } else { %>
+		<h3><em><%= "Sorry, but something has gone wrong and I was unable to get your data" %> ;_; </em></h3>
+	<% } %>
+</body>
+</html>
