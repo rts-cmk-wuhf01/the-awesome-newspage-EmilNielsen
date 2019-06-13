@@ -247,14 +247,21 @@ module.exports = (app) => {
          "pageNameList": pageNames
       });
    });
+
+   // function getCategories() {
+   //    let db = await mysql.connect();
+   //    let [categories] = await db.execute("SELECT * FROM categories");
+   //    db.end();
+   // }
    
    // Used to try different ways of putting the different pages together
    app.get('/test', async (req, res, next) => {
 
       let db = await mysql.connect();
       let [categories] = await db.execute("SELECT * FROM categories");
-      // let [articles] = await db.execute("SELECT * FROM articles WHERE fk_category_id = ?", [req.params.test_id]);
       db.end();
+
+      // getCategories();
 
       res.render('test', {
          "title": "The Amazing Test Page",
