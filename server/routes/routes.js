@@ -267,7 +267,27 @@ module.exports = (app) => {
    app.get('/test/:test_id', async (req, res, next) => {
 
       let db = await mysql.connect();
-      let [articlesFromDB] = await db.execute("SELECT * FROM articles WHERE fk_category_id = ?", [req.params.test_id]);
+      // v1.0
+      // let [articlesFromDB] = await db.execute("SELECT * FROM articles WHERE fk_category_id = ?", [req.params.test_id]);
+      // v2.0
+      let [articlesFromDB] = await db.execute(`
+      SELECT
+         category_id
+         , category_title
+         , article_id
+         , article_title
+         , article_text
+         , article_image
+         , article_likes
+         , author_id
+         , author_name
+         , (SELECT COUNT(comment_id)
+            FROM comments
+            WHERE fk_article_id = article_id) AS article_comments
+      FROM articles
+      INNER JOIN categories ON category_id = fk_category_id
+      INNER JOIN authors ON author_id = fk_author_id
+      WHERE fk_category_id = ?`, [req.params.test_id])
       db.end();
 
       res.render('single-category', {
