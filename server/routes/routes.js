@@ -8,29 +8,29 @@ module.exports = (app) => {
       let db = await mysql.connect();
       let [categories] = await db.execute("SELECT * FROM categories");
 
-      /* let [latestPosts] = await db.execute(`
-      SELECT
-         category_id
+      let [latestPosts] = await db.execute(`
+      SELECT 
+            category_id
          , category_title
          , article_id
          , article_title
          , article_image
          , article_postdate
-      FROM categories
+      FROM categories 
       LEFT OUTER JOIN articles ON fk_category_id = category_id
       WHERE article_id = (
-            SECELT article_id
-            FROM articles
-            WHERE fk_category_id = category_id
-            ORDER BY article_postdate DESC
+            SELECT article_id 
+            FROM articles 
+            WHERE fk_category_id = category_id 
+            ORDER BY article_postdate DESC 
             LIMIT 1)
-      ORDER BY article_postdate DESC`); */
+      ORDER BY article_postdate DESC`);
       db.end();
 
       res.render('home', {
          "title": "The News Paper - News & Lifestyle Magazine Template",
-         "pageNameList": categories/* ,
-         "latestComments": latestPosts */
+         "pageNameList": categories,
+         "latestComments": latestPosts
       });
    });
 
