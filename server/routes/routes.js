@@ -3,31 +3,35 @@ const date = require("date-and-time");
 
 module.exports = (app) => {
 
-   app.get('/', (req, res, next) => {
+   app.get('/', async (req, res, next) => {
 
-      let pageNames = [
-         {
-            "name": "Home",
-            "link": "/"
-         },
-         {
-            "name": "Categories",
-            "link": "/categories"
-         },
-         {
-            "name": "Single Articles",
-            "link": "/single-post"
-         }
-         ,
-         {
-            "name": "About Us",
-            "link": "/about"
-         },
-         {
-            "name": "Contact",
-            "link": "/contact"
-         }
-      ];
+      let db = await mysql.connect();
+      let [categories] = await db.execute("SELECT * FROM categories");
+      db.end();
+
+      // let pageNames = [
+      //    {
+      //       "name": "Home",
+      //       "link": "/"
+      //    },
+      //    {
+      //       "name": "Categories",
+      //       "link": "/categories"
+      //    },
+      //    {
+      //       "name": "Single Articles",
+      //       "link": "/single-post"
+      //    }
+      //    ,
+      //    {
+      //       "name": "About Us",
+      //       "link": "/about"
+      //    },
+      //    {
+      //       "name": "Contact",
+      //       "link": "/contact"
+      //    }
+      // ];
 
       let latestComments = [
          {
@@ -59,10 +63,47 @@ module.exports = (app) => {
 
       res.render('home', {
          "title": "The News Paper - News & Lifestyle Magazine Template",
-         "pageNameList": pageNames,
+         "pageNameList": categories,
          "latestComments": latestComments
       });
    });
+
+   /* app.get('/:category_id', async (req, res, next) => {
+
+      let db = await mysql.connect();
+      // v1.0
+      // let [articlesFromDB] = await db.execute("SELECT * FROM articles WHERE fk_category_id = ?", [req.params.test_id]);
+      // v2.0
+      let [articlesFromDB] = await db.execute(`
+      SELECT
+         category_id
+         , category_title
+         , article_id
+         , article_title
+         , article_text
+         , article_image
+         , article_likes
+         , author_id
+         , author_name
+         , (SELECT COUNT(comment_id)
+            FROM comments
+            WHERE fk_article_id = article_id) AS article_comments
+      FROM articles
+      INNER JOIN categories ON category_id = fk_category_id
+      INNER JOIN authors ON author_id = fk_author_id
+      WHERE fk_category_id = ?`, [req.params.category_id])
+      db.end();
+
+      res.render('single-category', {
+         "title": "The News Paper - News & Lifestyle Magazine Template",
+         "articles": articlesFromDB
+      });
+
+      console.log(articlesFromDB.length);
+
+      // res.send(req.params.test_id);
+
+   }); */
 
    app.get('/categories', (req, res, next) => {
 

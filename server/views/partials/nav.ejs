@@ -9,9 +9,11 @@
 				<li><a href="/about">About Us</a></li>
 				<li><a href="contact">Contact</a></li> -->
 
-				<% pageNameList.forEach(pageName => { %>
-					<li><a href="<%= pageName.link%>"><%= pageName.name %></a></a></li>
-				<% }) %>
+				<% if(typeof pageNameList != "undefined") { %>
+					<% pageNameList.forEach(pageName => { %>
+						<li><a href="test/<%= pageName.category_id %>"><%= pageName.category_title %></a></li>
+					<% }); %>
+				
 
 				<li><a href="#">Dropdown</a>
 					<ul class="dropdown">
@@ -21,7 +23,7 @@
 						<li><a href="/about">About Us</a></li>
 						<li><a href="contact">Contact</a></li> -->
 						<% pageNameList.forEach(pageName => { %>
-							<li><a href="<%= pageName.link%>"><%= pageName.name %></a></a></li>
+							<li><a href="test/<%= pageName.category_id %>"><%= pageName.category_title %></a></li>
 						<% }) %>
 					</ul>
 				</li>
@@ -37,7 +39,7 @@
 					<li><a href="/about">About Us</a></li>
 					<li><a href="contact">Contact</a></li> -->
 					<% pageNameList.forEach(pageName => { %>
-						<li><a href="<%= pageName.link%>"><%= pageName.name %></a></a></li>
+						<li><a href="test/<%= pageName.category_id %>"><%= pageName.category_title %></a></li>
 					<% }) %>
 				</ul>
 				<ul class="single-mega cn-col-4">
@@ -48,7 +50,7 @@
 					<li><a href="/about">About Us</a></li>
 					<li><a href="contact">Contact</a></li> -->
 					<% pageNameList.forEach(pageName => { %>
-						<li><a href="<%= pageName.link%>"><%= pageName.name %></a></a></li>
+						<li><a href="test/<%= pageName.category_id %>"><%= pageName.category_title %></a></li>
 					<% }) %>
 				</ul>
 				<ul class="single-mega cn-col-4">
@@ -59,7 +61,7 @@
 					<li><a href="/about">About Us</a></li>
 					<li><a href="contact">Contact</a></li> -->
 					<% pageNameList.forEach(pageName => { %>
-						<li><a href="<%= pageName.link%>"><%= pageName.name %></a></a></li>
+						<li><a href="test/<%= pageName.category_id %>"><%= pageName.category_title %></a></li>
 					<% }) %>
 				</ul>
 				<div class="single-mega cn-col-4">
@@ -74,40 +76,46 @@
 								<a href="#" class="post-title">
 									<h6>Pellentesque mattis arcu massa, nec fringilla turpis
 										eleifend id.</h6>
-								</a>
-								<p class="post-date"><span>7:00 AM</span> | <span>April
+									</a>
+									<p class="post-date"><span>7:00 AM</span> | <span>April
 										14</span></p>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
+							
+							<!-- Single Featured Post -->
+							<div class="single-blog-post small-featured-post d-flex">
+								<div class="post-thumb">
+									<a href="#"><img src="/img/bg-img/24.jpg" alt=""></a>
+								</div>
+								<div class="post-data">
+									<a href="#" class="post-catagory">Politics</a>
+									<div class="post-meta">
+										<a href="#" class="post-title">
+											<h6>Augue semper congue sit amet ac sapien. Fusce
+												consequat.</h6>
+											</a>
+											<p class="post-date"><span>7:00 AM</span> | <span>April
+												14</span></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<!-- <li><a href="#">Politics</a></li>
+							<li><a href="#">Breaking News</a></li>
+							<li><a href="#">Business</a></li>
+							<li><a href="#">Technology</a></li>
+							<li><a href="#">Health</a></li>
+							<li><a href="#">Travel</a></li>
+							<li><a href="#">Sports</a></li> -->
 
-					<!-- Single Featured Post -->
-					<div class="single-blog-post small-featured-post d-flex">
-						<div class="post-thumb">
-							<a href="#"><img src="/img/bg-img/24.jpg" alt=""></a>
-						</div>
-						<div class="post-data">
-							<a href="#" class="post-catagory">Politics</a>
-							<div class="post-meta">
-								<a href="#" class="post-title">
-									<h6>Augue semper congue sit amet ac sapien. Fusce
-										consequat.</h6>
-								</a>
-								<p class="post-date"><span>7:00 AM</span> | <span>April
-										14</span></p>
-							</div>
-						</div>
+							<% pageNameList.forEach(pageName => { %>
+								<li><a href="test/<%= pageName.category_id %>"><%= pageName.category_title %></a></li>
+							<% }) %>
+
+							<li><a href="contact">Contact</a></li>
+							<% } %>
+						</ul>
 					</div>
-				</div>
-			</div>
-		</li>
-		<li><a href="#">Politics</a></li>
-		<li><a href="#">Breaking News</a></li>
-		<li><a href="#">Business</a></li>
-		<li><a href="#">Technology</a></li>
-		<li><a href="#">Health</a></li>
-		<li><a href="#">Travel</a></li>
-		<li><a href="#">Sports</a></li>
-		<li><a href="contact">Contact</a></li>
-	</ul>
-</div>
