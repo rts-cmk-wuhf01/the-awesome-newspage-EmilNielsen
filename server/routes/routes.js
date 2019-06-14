@@ -7,64 +7,30 @@ module.exports = (app) => {
 
       let db = await mysql.connect();
       let [categories] = await db.execute("SELECT * FROM categories");
+
+      /* let [latestPosts] = await db.execute(`
+      SELECT
+         category_id
+         , category_title
+         , article_id
+         , article_title
+         , article_image
+         , article_postdate
+      FROM categories
+      LEFT OUTER JOIN articles ON fk_category_id = category_id
+      WHERE article_id = (
+            SECELT article_id
+            FROM articles
+            WHERE fk_category_id = category_id
+            ORDER BY article_postdate DESC
+            LIMIT 1)
+      ORDER BY article_postdate DESC`); */
       db.end();
-
-      // let pageNames = [
-      //    {
-      //       "name": "Home",
-      //       "link": "/"
-      //    },
-      //    {
-      //       "name": "Categories",
-      //       "link": "/categories"
-      //    },
-      //    {
-      //       "name": "Single Articles",
-      //       "link": "/single-post"
-      //    }
-      //    ,
-      //    {
-      //       "name": "About Us",
-      //       "link": "/about"
-      //    },
-      //    {
-      //       "name": "Contact",
-      //       "link": "/contact"
-      //    }
-      // ];
-
-      let latestComments = [
-         {
-            "name": "The beginning",
-            "date": "1970-01-01 0:00:00"
-         },
-         {
-            "name": "2nd Comment",
-            "date": "2019-04-14 9:10:00"
-         },
-         {
-            "name": "a 3rd Comment",
-            "date": "2019-04-14 8:05:00"
-         },
-         {
-            "name": "May the 4th be with me",
-            "date": "2019-04-14 7:25:00"
-         },
-         {
-            "name": "Comment the 5th?",
-            "date": "2019-04-14 6:58:00"
-         },
-         {
-            "name": "End of the line buddy... 6th comment",
-            "date": "2019-04-13 7:35:00"
-         },
-      ];
-
 
       res.render('home', {
          "title": "The News Paper - News & Lifestyle Magazine Template",
-         "pageNameList": categories,
-         "latestComments": latestComments
+         "pageNameList": categories/* ,
+         "latestComments": latestPosts */
       });
    });
 
