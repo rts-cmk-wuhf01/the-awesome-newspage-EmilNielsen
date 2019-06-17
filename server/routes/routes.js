@@ -317,8 +317,7 @@ module.exports = (app) => {
    });
 
    app.post("/contact", (req, res, next) => {
-      res.send(req.body);
-
+      
       //data from form
       let name = req.body.name;
       let email = req.body.email;
