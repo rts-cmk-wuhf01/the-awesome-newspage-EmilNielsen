@@ -74,8 +74,7 @@ module.exports = (app) => {
 
    app.get('/categories', (req, res, next) => {
 
-      let latestComments = [
-         {
+      let latestComments = [{
             "name": "The beginning of the End",
             "date": "1970-01-01 0:00:00"
          },
@@ -101,8 +100,7 @@ module.exports = (app) => {
          },
       ];
 
-      let pageNames = [
-         {
+      let pageNames = [{
             "name": "Home",
             "link": "/"
          },
@@ -113,8 +111,7 @@ module.exports = (app) => {
          {
             "name": "Single Articles",
             "link": "/single-post"
-         }
-         ,
+         },
          {
             "name": "About Us",
             "link": "/about"
@@ -134,8 +131,7 @@ module.exports = (app) => {
 
    app.get('/about', (req, res, next) => {
 
-      let pageNames = [
-         {
+      let pageNames = [{
             "name": "Home",
             "link": "/"
          },
@@ -146,8 +142,7 @@ module.exports = (app) => {
          {
             "name": "Single Articles",
             "link": "/single-post"
-         }
-         ,
+         },
          {
             "name": "About Us",
             "link": "/about"
@@ -157,7 +152,7 @@ module.exports = (app) => {
             "link": "/contact"
          }
       ];
-      
+
       res.render('about', {
          "title": "The News Paper - News & Lifestyle Magazine Template",
          "pageNameList": pageNames
@@ -166,8 +161,7 @@ module.exports = (app) => {
 
    app.get('/contact', (req, res, next) => {
 
-      let pageNames = [
-         {
+      let pageNames = [{
             "name": "Home",
             "link": "/"
          },
@@ -178,8 +172,7 @@ module.exports = (app) => {
          {
             "name": "Single Articles",
             "link": "/single-post"
-         }
-         ,
+         },
          {
             "name": "About Us",
             "link": "/about"
@@ -198,8 +191,7 @@ module.exports = (app) => {
 
    app.get('/single-post', (req, res, next) => {
 
-      let latestComments = [
-         {
+      let latestComments = [{
             "name": "Comment the 1st",
             "date": "2019-04-14 7:45:00"
          },
@@ -225,8 +217,7 @@ module.exports = (app) => {
          },
       ];
 
-      let pageNames = [
-         {
+      let pageNames = [{
             "name": "Home",
             "link": "/"
          },
@@ -237,8 +228,7 @@ module.exports = (app) => {
          {
             "name": "Single Articles",
             "link": "/single-post"
-         }
-         ,
+         },
          {
             "name": "About Us",
             "link": "/about"
@@ -261,7 +251,7 @@ module.exports = (app) => {
    //    let [categories] = await db.execute("SELECT * FROM categories");
    //    db.end();
    // }
-   
+
    // Used to try different ways of putting the different pages together
    app.get('/test', async (req, res, next) => {
 
@@ -273,8 +263,9 @@ module.exports = (app) => {
 
       res.render('test', {
          "title": "The Amazing Test Page",
-         "categories": categories/* ,
-         "articles": articles */
+         "categories": categories
+         /* ,
+                  "articles": articles */
       });
    });
 
@@ -316,37 +307,56 @@ module.exports = (app) => {
 
    });
 
-   app.post("/contact", (req, res, next) => {
-      
+   app.post("/contact", async (req, res, next) => {
+
       //data from form
       let name = req.body.name;
       let email = req.body.email;
       let subject = req.body.subject;
-      let text = req.body.text;
+      let messageText = req.body.text;
       let contactDate = new Date();
 
       let return_message = [];
-      if(name == undefined || name == "") {
+      if (name == undefined || name == "") {
          return_message.push("Name is missing");
       }
-      if(email == undefined || email == "") {
+      if (email == undefined || email == "") {
          return_message.push("Email is missing");
       }
-      if(subject == undefined || subject == "") {
+      if (subject == undefined || subject == "") {
          return_message.push("Subject is missing");
       }
-      if(text == undefined || text == "") {
+      if (messageText == undefined || messageText == "") {
          return_message.push("Message-text is missing");
       }
 
       if (return_message.length > 0) {
          // res.send(return_message.join(', '));
+         console.log(messageText);
          res.render("contact", {
             "return_message": return_message.join(", ")
          });
       } else {
-         res.send(req.body);
+         // res.send(req.body);
+         // let db = await mysql.connect();
+         // let result = await db.execute(`
+         // INSERT INTO messages
+         //    message_name = ?
+         //    , message_email = ?
+         //    , message_subject = ?
+         //    , message_text = ?
+         //    , message_date = ?
+         // `, [name, email, subject, text, contactDate]);
+         // db.end();
+         let db = await mysql.connect();
+         let result = await db.execute(`
+   INSERT INTO messages 
+      (message_name, message_email, message_subject, message_text, message_date) 
+   VALUES 
+      (?,?,?,?,?)`, [name, email, subject, messageText, contactDate]);
+         db.end();
       }
+      res.render("/contact");
    });
 
 };
