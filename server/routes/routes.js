@@ -340,7 +340,10 @@ module.exports = (app) => {
       }
 
       if (return_message.length > 0) {
-         res.send(return_message.join(', '));
+         // res.send(return_message.join(', '));
+         res.render("contact", {
+            "return_message": return_message.join(", ")
+         });
       } else {
          res.send(req.body);
       }

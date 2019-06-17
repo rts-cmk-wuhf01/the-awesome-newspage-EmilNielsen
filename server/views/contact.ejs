@@ -10,10 +10,6 @@
 <body>
 	<%- include('partials/header-full') %>
     <%- include('partials/hero-banners') %>
-    
-    <% if(typeof return_message != "undefined") { %>
-        <h4><%= return_message %></h4>
-    <% } %>
 
 	<!-- ##### Contact Form Area Start ##### -->
 	<div class="contact-area section-padding-0-80">
@@ -25,6 +21,10 @@
                     </div>
                 </div>
             </div>
+
+            <% if(typeof return_message != "undefined") { %>
+                <h4><%= return_message %></h4>
+            <% } %>
 
             <div class="row">
                 <div class="col-12 col-lg-8">
