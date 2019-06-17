@@ -1,5 +1,6 @@
 const mysql = require("../config/mysql");
 const date = require("date-and-time");
+const body = require("body-parser");
 
 module.exports = (app) => {
 
@@ -318,7 +319,32 @@ module.exports = (app) => {
    app.post("/contact", (req, res, next) => {
       res.send(req.body);
 
-      
+      //data from form
+      let name = req.body.name;
+      let email = req.body.email;
+      let subject = req.body.subject;
+      let text = req.body.text;
+      let contactDate = new Date();
+
+      let return_message = [];
+      if(name == undefined || name == "") {
+         return_message.push("Name is missing");
+      }
+      if(email == undefined || email == "") {
+         return_message.push("Email is missing");
+      }
+      if(subject == undefined || subject == "") {
+         return_message.push("Subject is missing");
+      }
+      if(text == undefined || text == "") {
+         return_message.push("Message-text is missing");
+      }
+
+      if (return_message.length > 0) {
+         res.send(return_message.join(', '));
+      } else {
+         res.send(req.body);
+      }
    });
 
 };

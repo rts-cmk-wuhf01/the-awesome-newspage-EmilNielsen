@@ -9,7 +9,11 @@
 </head>
 <body>
 	<%- include('partials/header-full') %>
-	<%- include('partials/hero-banners') %>
+    <%- include('partials/hero-banners') %>
+    
+    <% if(typeof return_message != "undefined") { %>
+        <h4><%= return_message %></h4>
+    <% } %>
 
 	<!-- ##### Contact Form Area Start ##### -->
 	<div class="contact-area section-padding-0-80">
@@ -28,13 +32,13 @@
                         <form method="post">
                             <div class="row">
                                 <div class="col-12 col-lg-6">
-                                    <input type="text" class="form-control" id="name" placeholder="Name">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Name">
                                 </div>
                                 <div class="col-12 col-lg-6">
-                                    <input type="email" class="form-control" id="email" placeholder="E-mail">
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="E-mail">
                                 </div>
                                 <div class="col-12">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <input type="text" name="subject" class="form-control" id="subject" placeholder="Subject">
                                 </div>
                                 <div class="col-12">
                                     <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
