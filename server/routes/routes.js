@@ -356,7 +356,9 @@ module.exports = (app) => {
       (?,?,?,?,?)`, [name, email, subject, messageText, contactDate]);
          db.end();
       }
-      res.render("/contact");
+      res.render("contact", {
+         "return_message": return_message.join(", ")
+      });
    });
 
 };
