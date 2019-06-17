@@ -2,7 +2,6 @@
 
     <% if(typeof latestComments != "undefined") { %>
         <% latestComments.forEach(comment => { %>
-            <% let commentDate = new Date(comment.date); %>
             
             <!-- Single Featured Post -->
             <div class="single-blog-post small-featured-post d-flex">
@@ -10,12 +9,12 @@
                     <a href="#"><img src="/img/bg-img/19.jpg" alt=""></a>
                 </div>
                 <div class="post-data">
-                    <a href="#" class="post-catagory"><%= comment.name %></a>
+                    <a href="#" class="post-catagory"><%= comment.article_title %></a>
                     <div class="post-meta">
                         <a href="#" class="post-title">
                             <h6>Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.</h6>
                         </a>
-                        <p class="post-date"><span><%= dateAndTime.format(commentDate, "hh:mm A, MMMM DD, YYYY") %></span></p>
+                        <p class="post-date"><span><%= comment.article_postdate %></span></p>
                     </div>
                 </div>
             </div>
