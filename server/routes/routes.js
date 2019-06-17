@@ -315,4 +315,10 @@ module.exports = (app) => {
 
    });
 
+   app.post("/contact", (req, res, next) => {
+      res.send(req.body);
+
+      
+   });
+
 };

@@ -4,6 +4,12 @@ const express = require('express');
 const dateAndTime = require('date-and-time');
 const app = express();
 
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+   extended: true
+}));
+
 
 
 /* aktiver serverside console.log af side indlæsninger. 
