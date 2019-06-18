@@ -85,6 +85,7 @@ module.exports = (app) => {
    //======================================================================
 
    //All categories
+   // ==> Needs latest comments from DB instead of js objects <==
    app.get('/categories', (req, res, next) => {
 
       let latestComments = [{
@@ -144,6 +145,7 @@ module.exports = (app) => {
    //======================================================================
 
    //About
+   // ==> Needs categories from DB instead of js objects <==
    app.get('/about', (req, res, next) => {
 
       let pageNames = [{
@@ -175,41 +177,8 @@ module.exports = (app) => {
    });
    //======================================================================
 
-   //Contact
-   app.get('/contact', (req, res, next) => {
-
-      // let pageNames = await getCategories();
-
-      let pageNames = [{
-            "name": "Home",
-            "link": "/"
-         },
-         {
-            "name": "Categories",
-            "link": "/categories"
-         },
-         {
-            "name": "Single Articles",
-            "link": "/single-post"
-         },
-         {
-            "name": "About Us",
-            "link": "/about"
-         },
-         {
-            "name": "Contact",
-            "link": "/contact"
-         }
-      ];
-
-      res.render('contact', {
-         "title": "The News Paper - News & Lifestyle Magazine Template",
-         "pageNameList": pageNames
-      });
-   });
-   //======================================================================
-
    //Single article
+   // ==> Needs categories from DB instead of js objects <==
    app.get('/single-post', (req, res, next) => {
 
       let latestComments = [{
@@ -263,6 +232,41 @@ module.exports = (app) => {
       res.render('single-post', {
          "title": "The News Paper - News & Lifestyle Magazine Template",
          "latestComments": latestComments,
+         "pageNameList": pageNames
+      });
+   });
+   
+   //======================================================================
+
+   //Contact
+   app.get('/contact', (req, res, next) => {
+
+      // let pageNames = await getCategories();
+
+      let pageNames = [{
+            "name": "Home",
+            "link": "/"
+         },
+         {
+            "name": "Categories",
+            "link": "/categories"
+         },
+         {
+            "name": "Single Articles",
+            "link": "/single-post"
+         },
+         {
+            "name": "About Us",
+            "link": "/about"
+         },
+         {
+            "name": "Contact",
+            "link": "/contact"
+         }
+      ];
+
+      res.render('contact', {
+         "title": "The News Paper - News & Lifestyle Magazine Template",
          "pageNameList": pageNames
       });
    });
