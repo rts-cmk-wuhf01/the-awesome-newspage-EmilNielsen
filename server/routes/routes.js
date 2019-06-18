@@ -2,15 +2,19 @@ const mysql = require("../config/mysql");
 const date = require("date-and-time");
 const body = require("body-parser");
 
+//Functions
+async function getCategories() {
+   let db = await mysql.connect();
+   let [categories] = await db.execute("SELECT * FROM categories");
+   db.end();
+   return categories;
+}
+
+//======================================================================
+
 module.exports = (app) => {
 
-   async function getCategories() {
-      let db = await mysql.connect();
-      let [categories] = await db.execute("SELECT * FROM categories");
-      db.end();
-      return categories;
-   }
-
+   //Home
    app.get('/', async (req, res, next) => {
 
       let db = await mysql.connect();
@@ -43,7 +47,9 @@ module.exports = (app) => {
          "latestComments": latestPosts
       });
    });
+   //======================================================================
    
+   //Single category
    app.get('/categories/:category_id', async (req, res, next) => {
 
       let categories = await getCategories();
@@ -76,7 +82,9 @@ module.exports = (app) => {
       });
 
    });
+   //======================================================================
 
+   //All categories
    app.get('/categories', (req, res, next) => {
 
       let latestComments = [{
@@ -133,7 +141,9 @@ module.exports = (app) => {
          "latestComments": latestComments
       });
    });
+   //======================================================================
 
+   //About
    app.get('/about', (req, res, next) => {
 
       let pageNames = [{
@@ -163,7 +173,9 @@ module.exports = (app) => {
          "pageNameList": pageNames
       });
    });
+   //======================================================================
 
+   //Contact
    app.get('/contact', (req, res, next) => {
 
       // let pageNames = await getCategories();
@@ -195,7 +207,9 @@ module.exports = (app) => {
          "pageNameList": pageNames
       });
    });
+   //======================================================================
 
+   //Single article
    app.get('/single-post', (req, res, next) => {
 
       let latestComments = [{
@@ -252,7 +266,9 @@ module.exports = (app) => {
          "pageNameList": pageNames
       });
    });
+   //======================================================================
 
+   //Contact validation
    app.post("/contact", async (req, res, next) => {
 
       //data from form
@@ -294,5 +310,6 @@ module.exports = (app) => {
          "return_message": return_message.join(", ")
       });
    });
+   //======================================================================
 
 };
