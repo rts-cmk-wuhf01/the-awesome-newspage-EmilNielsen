@@ -67,7 +67,7 @@ module.exports = (app) => {
       INNER JOIN categories ON category_id = fk_category_id
       INNER JOIN authors ON author_id = fk_author_id
       WHERE fk_category_id = ?`, [req.params.category_id])
-      db.end();   
+      db.end();
 
       res.render("single-category", {
          "title": "The News Paper - News & Lifestyle Magazine Template",
