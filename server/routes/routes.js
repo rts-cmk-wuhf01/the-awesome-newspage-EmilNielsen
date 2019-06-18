@@ -77,43 +77,6 @@ module.exports = (app) => {
 
    });
 
-   /* app.get('/:category_id', async (req, res, next) => {
-
-      let db = await mysql.connect();
-      // v1.0
-      // let [articlesFromDB] = await db.execute("SELECT * FROM articles WHERE fk_category_id = ?", [req.params.test_id]);
-      // v2.0
-      let [articlesFromDB] = await db.execute(`
-      SELECT
-         category_id
-         , category_title
-         , article_id
-         , article_title
-         , article_text
-         , article_image
-         , article_likes
-         , author_id
-         , author_name
-         , (SELECT COUNT(comment_id)
-            FROM comments
-            WHERE fk_article_id = article_id) AS article_comments
-      FROM articles
-      INNER JOIN categories ON category_id = fk_category_id
-      INNER JOIN authors ON author_id = fk_author_id
-      WHERE fk_category_id = ?`, [req.params.category_id])
-      db.end();
-
-      res.render('single-category', {
-         "title": "The News Paper - News & Lifestyle Magazine Template",
-         "articles": articlesFromDB
-      });
-
-      console.log(articlesFromDB.length);
-
-      // res.send(req.params.test_id);
-
-   }); */
-
    app.get('/categories', (req, res, next) => {
 
       let latestComments = [{
@@ -203,6 +166,8 @@ module.exports = (app) => {
 
    app.get('/contact', (req, res, next) => {
 
+      // let pageNames = await getCategories();
+
       let pageNames = [{
             "name": "Home",
             "link": "/"
@@ -288,61 +253,6 @@ module.exports = (app) => {
       });
    });
 
-   // Used to try different ways of putting the different pages together
-   // app.get('/test', async (req, res, next) => {
-
-   //    let db = await mysql.connect();
-   //    let [categories] = await db.execute("SELECT * FROM categories");
-   //    db.end();
-
-   //    // getCategories();
-
-   //    res.render('test', {
-   //       "title": "The Amazing Test Page",
-   //       "categories": categories
-   //       /* ,
-   //                "articles": articles */
-   //    });
-   // });
-
-   // Now testing with urlParams
-   // app.get('/test/:test_id', async (req, res, next) => {
-
-   //    let db = await mysql.connect();
-   //    // v1.0
-   //    // let [articlesFromDB] = await db.execute("SELECT * FROM articles WHERE fk_category_id = ?", [req.params.test_id]);
-   //    // v2.0
-   //    let [articlesFromDB] = await db.execute(`
-   //    SELECT
-   //       category_id
-   //       , category_title
-   //       , article_id
-   //       , article_title
-   //       , article_text
-   //       , article_image
-   //       , article_likes
-   //       , author_id
-   //       , author_name
-   //       , (SELECT COUNT(comment_id)
-   //          FROM comments
-   //          WHERE fk_article_id = article_id) AS article_comments
-   //    FROM articles
-   //    INNER JOIN categories ON category_id = fk_category_id
-   //    INNER JOIN authors ON author_id = fk_author_id
-   //    WHERE fk_category_id = ?`, [req.params.test_id])
-   //    db.end();
-
-   //    res.render('single-category', {
-   //       "title": "The News Paper - News & Lifestyle Magazine Template",
-   //       "articles": articlesFromDB
-   //    });
-
-   //    console.log(articlesFromDB.length);
-
-   //    // res.send(req.params.test_id);
-
-   // });
-
    app.post("/contact", async (req, res, next) => {
 
       //data from form
@@ -367,23 +277,11 @@ module.exports = (app) => {
       }
 
       if (return_message.length > 0) {
-         // res.send(return_message.join(', '));
          console.log(messageText);
          res.render("contact", {
             "return_message": return_message.join(", ")
          });
       } else {
-         // res.send(req.body);
-         // let db = await mysql.connect();
-         // let result = await db.execute(`
-         // INSERT INTO messages
-         //    message_name = ?
-         //    , message_email = ?
-         //    , message_subject = ?
-         //    , message_text = ?
-         //    , message_date = ?
-         // `, [name, email, subject, text, contactDate]);
-         // db.end();
          let db = await mysql.connect();
          let result = await db.execute(`
    INSERT INTO messages 
