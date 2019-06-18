@@ -8,6 +8,9 @@
 </head>
 <body>
 
+	<%- include("partials/header-full") %>
+	<%- include("partials/hero-banners") %>
+
 	<% if(typeof articles != "undefined") { %>
 		<% if(articles.length === 0) { %>
 			<h2>Sorry, no articles currently exist in this category</h2>
@@ -21,9 +24,13 @@
 				<% }); %>
 			<% } %>
 	<% } else { %>
-		<h3><em><%= "Sorry, but something has gone wrong and I was unable to get your data" %> ( ≧Д≦) </em></h3>
+		<h3><em><%= "Sorry, but something has gone wrong and we were unable to get your data" %> ( ≧Д≦) </em></h3>
 	<% } %>
 
 	
+	<%- include("partials/footer-full") %>
+	
+	<%- include("partials/scripts") %>
+
 </body>
 </html>
