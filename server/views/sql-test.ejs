@@ -1,0 +1,15 @@
+<h1><%= typeof title != "undefined" ? title : "yote" %></h1>
+
+<% if(typeof categories != "undefined") { %>
+	<% categories.forEach(category => { %>
+		<p><%= category.category_title %></p>
+	<% }) %>
+<% } %>
+
+<hr>
+
+<% if(typeof messages != "undefined") { %>
+	<% messages.forEach(message => { %>
+		<p><%= message.message_name %></p>
+	<% }) %>
+<% } %>

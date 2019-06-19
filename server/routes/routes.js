@@ -40,6 +40,7 @@ module.exports = (app) => {
       ORDER BY article_postdate DESC`);
       db.end();
       console.log(categories);
+      console.log(latestPosts);
 
       res.render('home', {
          "title": "The News Paper - News & Lifestyle Magazine Template",
@@ -321,5 +322,23 @@ module.exports = (app) => {
       res.send("Howdy pardner");
    }); */
    //======================================================================
+
+   app.get("/sql-testing", async (req, res, next) => {
+
+      let categories = await getCategories();
+
+      let db = await mysql.connect();
+      let [authors] = await db.execute("SELECT * FROM authors");
+
+      let [messages] = await db.execute("SELECT message_name, message_subject FROM messages");
+      db.end();
+
+      res.render("sql-test", {
+         "title": "SQL TESTING",
+         "categories": categories,
+         "authors": authors,
+         "messages": messages
+      });
+   });
 
 }; //End of module exports
