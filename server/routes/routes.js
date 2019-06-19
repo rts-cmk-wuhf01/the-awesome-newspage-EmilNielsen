@@ -316,9 +316,10 @@ module.exports = (app) => {
    //======================================================================
 
    //Nyt route til /howdy
-   app.get("/howdy", (req, res, next) => {
+   /* app.get("/howdy", (req, res, next) => {
       //res.send() sender det der bliver lagt ind i () til siden og viser det uden noget andet
       res.send("Howdy pardner");
-   });
+   }); */
+   //======================================================================
 
 }; //End of module exports
