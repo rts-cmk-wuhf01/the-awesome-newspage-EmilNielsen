@@ -1,0 +1,22 @@
+<h1 style="text-align: center; margin: 150px 0 0 0; text-shadow: -2.5px 2px 15px black;">Her har du <%= typeof fisk_data != "undefined" ? fisk_data.fisk_antal : "en ORDENLIG" %> fisk</h1>
+
+<script>
+function rng(max) {
+	return Math.floor(Math.random() * Math.floor(max));
+}
+
+function rgb() {
+	document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+	r = rng(255);
+	g = rng(255);
+	b = rng(255);
+}
+
+let r = rng(255);
+let g = rng(255);
+let b = rng(255);
+
+setInterval(() => {
+	rgb();
+}, 250);
+</script>

@@ -340,5 +340,28 @@ module.exports = (app) => {
          "messages": messages
       });
    });
+   //======================================================================
+
+   //Nyt route til fisk
+   app.get("/fisk", async (req, res, next) => {
+
+      // res.send("Her har du en fisk");
+
+      res.render("fisk");
+
+   });
+
+   //Nyt route med url-params
+   app.get("/fisk/:fisk_antal", async (req, res, next) => {
+
+      let fisk_data = {
+         "fisk_antal": req.params.fisk_antal
+      }
+
+      res.render("fisk", {
+         "fisk_data": fisk_data
+      });
+   });
+   //======================================================================
 
 }; //End of module exports
