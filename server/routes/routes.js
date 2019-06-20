@@ -343,13 +343,13 @@ module.exports = (app) => {
    //======================================================================
 
    //Nyt route til fisk
-   // app.get("/fisk", async (req, res, next) => {
+   app.get("/fisk", async (req, res, next) => {
 
-   //    // res.send("Her har du en fisk");
+      // res.send("Her har du en fisk");
 
-   //    res.render("fisk");
+      res.render("fisk");
 
-   // });
+   });
 
    //Nyt route med url-params
    app.get("/fisk/:fisk_antal", async (req, res, next) => {
