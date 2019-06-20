@@ -343,13 +343,13 @@ module.exports = (app) => {
    //======================================================================
 
    //Nyt route til fisk
-   app.get("/fisk", async (req, res, next) => {
+   // app.get("/fisk", async (req, res, next) => {
 
-      // res.send("Her har du en fisk");
+   //    // res.send("Her har du en fisk");
 
-      res.render("fisk");
+   //    res.render("fisk");
 
-   });
+   // });
 
    //Nyt route med url-params
    app.get("/fisk/:fisk_antal", async (req, res, next) => {
@@ -361,6 +361,19 @@ module.exports = (app) => {
       res.render("fisk", {
          "fisk_data": fisk_data
       });
+   });
+
+   app.get("/fisk/:fisk_antal/:fisk_type", (req, res, next) => {
+
+      let fisk_data = {
+         "fisk_antal": req.params.fisk_antal,
+         "fisk_type": req.params.fisk_type
+      }
+
+      res.render("fisk", {
+         "fisk_data": fisk_data
+      });
+
    });
    //======================================================================
 
