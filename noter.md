@@ -51,7 +51,7 @@ Så for at få fat i data'en fra vores email felt kommer feltet til at se sådan
 ```
 
 * (**Q**) Hvad er forskellen på `<%-  %>` & `<%=  %>`?\
-(**A**) `<%=  %>` udskriver data på siden og `<%-  %>` gør noget andet... <!--Skriv det mere præcist -->
+(**A**) `<%=  %>` udskriver data på siden
 
 * (**Q**) Hvad betyder `?` i javascript?\
 `?` er en *ternary operator*; vi har brugt den til at forkorte en if-sætning
