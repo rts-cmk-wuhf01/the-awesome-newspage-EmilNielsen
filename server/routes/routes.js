@@ -363,6 +363,7 @@ module.exports = (app) => {
       });
    });
 
+   //Fisk nu med to url-params
    app.get("/fisk/:fisk_antal/:fisk_type", (req, res, next) => {
 
       let fisk_data = {
