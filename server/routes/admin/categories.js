@@ -30,9 +30,9 @@ module.exports = (app) => {
    //======================================================================
 
    // adds a new category to the list
-   /* app.post("/admin/categories", async (req, res, next) => {
+   app.post("/admin/categories", async (req, res, next) => {
 
-      let name = req.body.name;
+      let name = req.body.category_title;
 
       let return_message = [];
       if (name == undefined || name == "") {
@@ -41,22 +41,22 @@ module.exports = (app) => {
 
       if (return_message.length > 0) {
          console.log(messageText);
-         res.render("contact", {
+         res.render("admin/categories", {
             "return_message": return_message.join(", ")
          });
       } else {
          let db = await mysql.connect();
          let result = await db.execute(`
-   INSERT INTO messages 
-      (message_name, message_email, message_subject, message_text, message_date) 
+   INSERT INTO categories 
+      (category_title) 
    VALUES 
-      (?,?,?,?,?)`, [name, email, subject, messageText, contactDate]);
+      (?)`, [name]);
          db.end();
       }
-      res.render("contact", {
+      res.render("admin/categories", {
          "return_message": return_message.join(", ")
       });
 
-   }); */
+   });
 
 }; //End of module exports
