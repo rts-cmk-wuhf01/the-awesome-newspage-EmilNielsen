@@ -79,4 +79,10 @@ module.exports = (app) => {
 
    });
 
+   app.post("/admin/categories/edit/:category_id", async (req, res, next) => {
+
+      res.send(req.params.category_id);
+
+   });
+
 }; //End of module exports
