@@ -3,7 +3,7 @@
 		<input
 		  type="text"
 		  name="category_title"
-		  value="<%= typeof category != 'undefined' ? category.category_title : '' %>">
+		  value="<%= typeof selectedCategory != 'undefined' ? selectedCategory.category_title : '' %>">
 		<button>Save</button>
 	  </form>
 
@@ -20,8 +20,8 @@
 			<% categories.forEach(category => { %>
 				<tr>
 					<td>
-						<a href="admin/categories/edit/<%= category.category_id %>">Edit</a>
-						<a href="admin/categories/delete/<%= category.category_id %>">Delete</a>
+						<a href="/admin/categories/edit/<%= category.category_id %>">Edit</a>
+						<a href="/admin/categories/delete/<%= category.category_id %>">Delete</a>
 					</td>
 					<td><%= category.category_id %></td>
 					<td><%= category.category_title %></td>
