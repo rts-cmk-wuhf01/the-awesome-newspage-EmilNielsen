@@ -21,7 +21,7 @@
 				<tr>
 					<td>
 						<a href="/admin/categories/edit/<%= category.category_id %>">Edit</a>
-						<a href="/admin/categories/delete/<%= category.category_id %>">Delete</a>
+						<a href="/admin/categories/delete/<%= category.category_id %>" onclick="return confirm('Are you sure you wish to delte this category?')" >Delete</a>
 					</td>
 					<td><%= category.category_id %></td>
 					<td><%= category.category_title %></td>
