@@ -81,7 +81,16 @@ module.exports = (app) => {
 
    app.post("/admin/categories/edit/:category_id", async (req, res, next) => {
 
-      res.send(req.params.category_id);
+      
+      let db = await mysql.connect();
+      let result = await db.execute(`UPDATE categories SET category_title = ? WHERE category_id = ?`, [req.body.category_title, req.params.category_id]);
+      db.end();
+      
+      let categories = await getCategories();
+
+      res.render("admin/categories", {
+         "categories": categories
+      });
 
    });
 
